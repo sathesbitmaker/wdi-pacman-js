@@ -47,6 +47,16 @@ function EatGhosts(ghostsname){
     zero()
   }
 }
+
+//increase pacman's score by 50 points
+function PowerPellets(){
+  score += 50;
+  if (ghosts.edible === false);{
+    (ghosts.edible === true);{
+      powerPellets -=1;
+    }
+  }
+}
 // include a quick sentence that says the name and colour of the ghost that kills Pac-Man
 //(similar to how it quickly flashes chomp on the screen when you eat a dot)
 console.log
@@ -72,6 +82,7 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(p) Power Pellet');
   console.log('(1) Eat Inky');
   console.log('(2) Eat Blinky');
   console.log('(3) Eat Pinky');
@@ -101,6 +112,9 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case 'p':
+      PowerPellets();
       break;
     case '1':
       EatGhosts(Inky);
