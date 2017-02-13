@@ -39,6 +39,16 @@ var Clyde = {
 // replace this comment with your four ghosts setup as objects
 var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde']
 
+// Add a function called eatghosts that accepts ghost as an edible
+function EatGhosts(ghostsname){
+  if (ghostsname.edible === false);{
+    lives--
+  }
+}
+// include a quick sentence that says the name and colour of the ghost that kills Pac-Man
+//(similar to how it quickly flashes chomp on the screen when you eat a dot)
+console.log
+
 // Draw the screen functionality
 function drawScreen() {
   clearScreen();
@@ -90,8 +100,12 @@ function processInput(key) {
     case 'd':
       eatDot();
       break;
+    case '1':
+      EatGhosts(Inky);
+      break;
     default:
       console.log('\nInvalid Command!');
+
   }
 }
 
