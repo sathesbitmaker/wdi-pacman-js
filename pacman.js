@@ -1,6 +1,7 @@
 // Setup initial game stats
 var score = 0;
 var lives = 2;
+var powerPellets = 4
 
 
 // Define your ghosts here
@@ -43,6 +44,7 @@ var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde']
 function EatGhosts(ghostsname){
   if (ghostsname.edible === false);{
     lives--
+    zero()
   }
 }
 // include a quick sentence that says the name and colour of the ghost that kills Pac-Man
@@ -64,7 +66,7 @@ function clearScreen() {
 }
 
 function displayStats() {
-  console.log('Score: ' + score + '     Lives: ' + lives);
+  console.log('Score: ' + score + '     Lives:  ' + lives +   '\n\nPowerPellets:  ' + powerPellets);
 }
 
 function displayMenu() {
@@ -103,12 +105,25 @@ function processInput(key) {
     case '1':
       EatGhosts(Inky);
       break;
+    case '2':
+      EatGhosts(Blinky);
+      break;
+    case '3':
+      EatGhosts(Pinky);
+      break;
+    case '4':
+      EatGhosts(Clyde);
+      break;
     default:
       console.log('\nInvalid Command!');
 
   }
 }
-
+//when pacman's lives go below 0 exit the game
+function zero() {
+  if (lives < 0){
+  process.exit();}
+}
 
 //
 // YOU PROBABLY DON'T WANT TO CHANGE CODE BELOW THIS LINE
