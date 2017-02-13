@@ -6,14 +6,14 @@ var lives = 2;
 // Define your ghosts here
 var Inky = {
   menu_option: '1',
-  name: 'Inky'
-  colour: 'Red'
-  character: 'Shadow'
+  name: 'Inky',
+  colour: 'Red',
+  character: 'Shadow',
   edible: false
 };
 
 var Blinky = {
-  menu_option: '2'
+  menu_option: '2',
   name: 'Blinky',
   colour: 'Cyan',
   character: 'Speedy',
@@ -29,7 +29,7 @@ var Pinky = {
 };
 
 var Clyde = {
-  menu_option: '4'
+  menu_option: '4',
   name: 'Clyde',
   colour: 'Orange',
   character: 'Pokey',
@@ -37,7 +37,7 @@ var Clyde = {
 };
 
 // replace this comment with your four ghosts setup as objects
-var ghosts = [Inky, Blinky, Pinky, Clyde]
+var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde']
 
 // Draw the screen functionality
 function drawScreen() {
@@ -60,6 +60,10 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(1) Eat Inky');
+  console.log('(2) Eat Blinky');
+  console.log('(3) Eat Pinky');
+  console.log('(4) Eat Clyde');
   console.log('(q) Quit');
 }
 
