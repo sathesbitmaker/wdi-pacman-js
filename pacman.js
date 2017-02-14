@@ -5,7 +5,7 @@ var powerPellets = 4
 
 
 // Define your ghosts here
-var Inky = {
+var inky = {
   menu_option: '1',
   name: 'Inky',
   colour: 'Red',
@@ -13,7 +13,7 @@ var Inky = {
   edible: false
 };
 
-var Blinky = {
+var blinky = {
   menu_option: '2',
   name: 'Blinky',
   colour: 'Cyan',
@@ -21,7 +21,7 @@ var Blinky = {
   edible: false
 };
 
-var Pinky = {
+var pinky = {
   menu_option: '3',
   name: 'Pinky',
   colour: 'Pink',
@@ -29,7 +29,7 @@ var Pinky = {
   edible: false
 };
 
-var Clyde = {
+var clyde = {
   menu_option: '4',
   name: 'Clyde',
   colour: 'Orange',
@@ -38,28 +38,45 @@ var Clyde = {
 };
 
 // replace this comment with your four ghosts setup as objects
-var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde']
+var ghosts = [inky, blinky, pinky, clyde]
 
 // Add a function called eatghosts that accepts ghost as an edible
 function EatGhosts(ghostsname){
-  if (ghostsname.edible === false);{
+  if (ghostsname.edible === false) {
     lives--
     zero()
+    console.log(ghostsname.name, ghostsname.colour)
+  }
+  else {
+      console.log(' RIP' + ghostsname + ' he was such a good kid');
+      score += 200;
+      for (var index = 0; index < ghosts.length; index ++){
+        ghosts[index].edible = false
+      }
   }
 }
 
 //increase pacman's score by 50 points
 function PowerPellets(){
   score += 50;
-  if (ghosts.edible === false);{
-    (ghosts.edible === true);{
-      powerPellets -=1;
-    }
+  if (powerPellets < 1){
+    console.log('No More Pellets!!!')
   }
+  for (var index = 0; index < ghosts.length; index ++){
+      ghosts[index].edible = true
+  }
+  // console.log(' RIP' + ghosts[index].name + ' he was such a good kid')
+  powerPellets -=1;
 }
+//Ensure that Pac-Man can't eat a Power-Pellet if there are none left
+function NoMorePellets(){
+  if (powerPellets < 0){}
+}
+
+
+
 // include a quick sentence that says the name and colour of the ghost that kills Pac-Man
 //(similar to how it quickly flashes chomp on the screen when you eat a dot)
-console.log
 
 // Draw the screen functionality
 function drawScreen() {
@@ -82,11 +99,13 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  if (powerPellets >= 1){
   console.log('(p) Power Pellet');
-  console.log('(1) Eat Inky');
-  console.log('(2) Eat Blinky');
-  console.log('(3) Eat Pinky');
-  console.log('(4) Eat Clyde');
+}
+  console.log('(1) Eat Inky' + (inky.edible));
+  console.log('(2) Eat Blinky' + (blinky.edible));
+  console.log('(3) Eat Pinky' + (pinky.edible));
+  console.log('(4) Eat Clyde' + (clyde.edible));
   console.log('(q) Quit');
 }
 
@@ -117,16 +136,16 @@ function processInput(key) {
       PowerPellets();
       break;
     case '1':
-      EatGhosts(Inky);
+      EatGhosts(inky);
       break;
     case '2':
-      EatGhosts(Blinky);
+      EatGhosts(blinky);
       break;
     case '3':
-      EatGhosts(Pinky);
+      EatGhosts(pinky);
       break;
     case '4':
-      EatGhosts(Clyde);
+      EatGhosts(clyde);
       break;
     default:
       console.log('\nInvalid Command!');
